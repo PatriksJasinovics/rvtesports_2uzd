@@ -68,7 +68,69 @@
             <li><h5>Vai ziedojot CS:GO skinus</h5> <a href="https://steamcommunity.com/tradeoffer/new/?partner=163677314&token=2Sci675N" class="text-dark">Šajā mājaslapā</a></li>
         </ul>
         <br>
-        <h4>Liels paldies par atbalstu!</h4>
+        <h4>Liels paldies par atbalstu! <br> Vai ir kādi ieteikumi?</h4>
+        <span id="ieteikumi">
+    <div class="ieteikumi" id="ieteikumi">
+        <div class="container-fluid padding">
+            <div class="row welcome text-center">
+                <div class="col-12">
+                    <form action="donate.php#ieteikumi" method="post">
+                        <div class="form-group">
+                            <h3><label for="name">Vārds</label></h3>
+                            <input type="name" class="form-control" id="name" aria-describedby="Vārds" placeholder="Vārds" name="name">
+                        </div>
+                        <div class="form-group">
+                            <h3><label for="email">E-pasts</label></h3>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-pasts" name="email">
+                        </div>
+                        <div class="form-group">
+                            <h3><label for="telephone">Telefons</label></h3>
+                            <input type="telephone" class="form-control" id="telephone" placeholder="Telefons" name="telephone">
+                        </div>
+                        <div class="form-group">
+                            <h3><label for="textArea">Jūsu ieteikums/jautājums</label></h3>
+                            <textarea class="form-control" id="textarea" rows="4" name="suggestion" placeholder="Ieteikums/jautājums"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="save">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</span>
+
+<?php
+    if(isset($_POST['save'])) {
+        if(empty($_POST['name']))
+        {
+            echo "<b>Vārds:</b> Lauks nevar būt tukšs</br>";
+        } else {
+            if(preg_match('~[0-9]+~', $_POST['name'])) {
+                echo "<b>Vārds:</b> Jūsu vārds nevar saturēt ciparus</br>";
+            } else {
+                echo "<b>Vārds:</b> {$_POST['name']}</br>";
+            }
+        }
+        if(empty($_POST['email']))
+        {
+            echo "<b>E-pasts:</b> Lauks nevar būt tukšs</br>";
+        } else {
+            echo "<b>E-pasts: </b>{$_POST['email']}</br>";
+        }
+        if(empty($_POST['telephone']))
+        {
+            echo "<b>Telefons:</b> Lauks nevar būt tukšs</br>";
+        } else {
+            if(preg_match('~[aA-zZ]+~', $_POST['telephone'])) {
+                echo "<b>Telefons: </b>Telefona numurs nevar saturēt burtus</br>";
+            } else {
+                echo "<b>Telefons: </b>{$_POST['telephone']}</br>";
+            }
+        }
+        echo "<b>Jautājums: </b>{$_POST['suggestion']}";
+}
+?>
+
     </div>
     <div class="col-sm-4" style="background-color:mediumseagreen">
         <h4>Divi mūsu spēlētāji arī regulāri strīmo YouTube:</h4>
