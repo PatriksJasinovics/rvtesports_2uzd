@@ -56,7 +56,50 @@
             <p>Diemžēl drīzumā nav paredzēta neviena spēle, bet iepriekšējo spēļu mirkļus variet redzēt sadaļā <b>Galerija</b></p>
         </div>
         <div class="col-sm-4" style="background-color:seagreen">
-            <h1>Rīgas Valsts tehnikuma <br>eSports komanda</h1> <br>
+            <h1>Rīgas Valsts tehnikuma <br>eSports komandas login forma</h1> <br>
+            <span id="login">
+    <div class="login" id="login">
+        <div class="container-fluid padding">
+            <div class="row welcome text-center">
+                <div class="col-12">
+                    <form action="index.php#login" method="post">
+                        <div class="form-group">
+                            <h3><label for="email">E-pasts</label></h3>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-pasts" name="email">
+                        </div>
+                        <div class="form-group">
+                            <h3><label for="password">Parole/ID</label></h3>
+                            <input type="password" class="form-control" id="password" placeholder="Parole/ID" name="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="save">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</span>
+
+<?php
+    if(isset($_POST['save'])) {
+        if(empty($_POST['email']))
+        {
+            echo "<b>E-pasts:</b> NEVAR BŪT TUKŠS</br>";
+        } else {
+            echo "<b>E-pasts: </b>{$_POST['email']}</br>";
+        }
+        if(empty($_POST['password']))
+        {
+            echo "<b>Parole/ID:</b> NEVAR BŪT TUKŠS</br>";
+        } else {
+            if(preg_match('~[aA-zZ]+~', $_POST['password'])) {
+                echo "<b>Parole/ID: </b>ID NEVAR SATURĒT BURTUS</br>";
+            } else {
+                echo "<b>Parole/ID: </b>{$_POST['password']}</br>";
+            }
+        }
+}
+?>
+
             <p><b>Šī pašlaik ir viena no labākajām Latvijas skolu eSports komandām Latvijā.</b> <br> Mūsu moto ir: <b>Vairāk nekā CS:GO komanda</b>
                 <br></p>
             <p>Potenciāls ir neierobežots un iespējas uzvarām ir neskaitāmas, tomēr līdz šim gan nav veicies ne pret Rīgas tehniskās koledžas komandu, ne pret Rīgas Juglas vidusskolas eSports komandu.
